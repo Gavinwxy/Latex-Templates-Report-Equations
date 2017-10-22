@@ -1,0 +1,494 @@
+%	Name			:: 	sthlm Beamer Theme  HEAVILY based on the hsrmbeamer theme (Benjamin Weiss)
+%	Author			:: 	Mark Hendry Olson (mark@hendryolson.com)
+%	Created			::	2013-07-31
+%	Updated	    	::	[[April]] 04, 2017 at 16:26:39
+%	Version			:: 	2.0.2
+%	Email			:: 	hendryolson@gmail.com
+%	Website			:: 	http://markolson.se
+%	Twitter			:: 	markolsonse
+%	Instagram		:: 	markolsonse
+%
+%	License			:: 	This file may be distributed and/or modified under the
+%					GNU Public License.
+%
+%	Description		::	This presentation is a demonstration of the sthlm beamer
+%					theme, which is HEAVILY based on the HSRM beamer theme created by Benjamin Weiss
+%					(benjamin.weiss@student.hs-rm.de), which can be found on GitHub
+%					<https://github.com/hsrmbeamertheme/hsrmbeamertheme>.  It also borrows heavily
+%					from the work of Matthias Vogelgesang, (https://bloerg.net) and his Metropolis Mtheme,
+%					<https://github.com/matze/mtheme>.
+%
+%	Theme			::	newPxFont
+%	Options			::	progressbar
+%					::	sectionpages
+%					::	numfooter
+%					::	fullfooter
+%					::	dovaligncolumns
+%					::	protectframetitle
+%					::	greybg
+%					::	cblock
+%					::	minimal
+
+
+%-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+%
+%        LOADING DOCUMENT
+%
+%-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+\documentclass[newPxFont,numfooter,sectionpages]{beamer}
+\usepackage[utf8]{inputenc}
+\usetheme{sthlm}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.14}
+\usepackage{cancel}
+\usepackage{animate}
+\usepackage{listings}
+\usepackage{pythonhighlight}
+\usepackage{eurosym} 
+\usepackage{graphicx}
+%-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+%
+%	PRESENTATION INFORMATION
+%
+%-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+\title{Stockholm Beamer Theme}
+\subtitle{sthlm v2.0.2 is based on hsrm \& mTheme}
+\date{\today}
+\author{\texttt{MarkOlson.SE}}
+\institute{Made in \textit{Sweden} \par \small{File: \jobname}}
+
+\hypersetup{
+pdfauthor = {Mark H. Olson: hendryolson@gmail.com},
+pdfsubject = {Beamer},
+pdfkeywords = {Beamer theme, sthlm},
+pdfmoddate= {D:\pdfdate},
+pdfcreator = {}
+}
+
+\begin{document}
+
+%-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+%
+%	TITLE PAGE
+%
+%-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+\maketitle
+
+
+
+
+%-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+%
+%	TABLE OF CONTENTS: OVERVIEW
+%
+%-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+\section*{Overview}
+\begin{frame}{Overview}
+% For longer presentations use hideallsubsections option
+\tableofcontents[hideallsubsections]
+\end{frame}
+
+%-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+%
+%	TABLE OF CONTENTS: OVERVIEW
+%
+%-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+\section{General Information}
+
+%-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+%	FRAME:
+%-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+\begin{frame}[c]{sthlm Theme Information}
+
+\alert{sthlm} theme was originally designed to bring pdflatex support and color to the unique beamer \alert{hsrm} theme designed by Benjamin Weiss.  Thank You Ben!   
+
+\begin{center}
+\cBlue{\url{https://goo.gl/NRseuc}}
+\end{center}
+
+Since then, \alert{sthlm} has borrowed heavily from \alert{mTheme} developed by Matthias Vogelgesang.  
+
+\end{frame}
+
+
+%-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+%	FRAME:
+%-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+\begin{frame}[c]{sthlm Theme Information}
+	
+\alert{sthlm} continues to be a theme that can easily be modified through the style files.  If you are looking for a packaged theme, then I highly recommend \alert{mTheme}.\\
+
+\vspace{1em}
+
+I use a custom version of \alert{sthlm} for daily decks and make a vanilla version of the theme available for others to use and modify. - Enjoy!
+
+\end{frame}
+
+%-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+%	FRAME:
+%-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+\begin{frame}[c]{sthml Build Information}
+\cRed{sthlm} theme has been designed and tested to work within the SageMathCloud (Linux) environment.\\
+
+\vspace{1em}
+
+\begin{alertblock}{Warning of Build Issues}
+I cannot guarantee that the code used to create the sthlm theme is \emph{error free}, \emph{optimized}, \emph{well written} nor \emph{if it will work in your production environment}.
+\end{alertblock}
+
+
+\end{frame}
+
+%-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+%	FRAME:
+%-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+\begin{frame}[c]{Have Fun!}
+If you have read this far, then you are probably interested in using / modifying this theme for your own project. \\
+\vspace{1em}
+Everything you need is in the
+
+\begin{itemize}
+	\item style files:
+	\begin{itemize}
+		\item \texttt{beamerthemesthlm.\cBlue{sty}},
+		\item \texttt{beamerfontthemesthlm.\cBlue{sty}},
+		\item \texttt{beamercolorthemesthlm.\cBlue{sty}}.
+	\end{itemize}
+\end{itemize}
+
+\end{frame}
+
+
+
+%-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+%	FRAME:
+%-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+\begin{frame}{Theme Package Requirements}
+
+This theme requires that the following packages are installed:
+
+\begin{columns}[t]
+\begin{column}{0.5\textwidth}
+\begin{itemize}
+\item \emph{beamer}
+\item \emph{backgrounds}
+\item \emph{booktabs}
+\item \emph{calc}
+\end{itemize}
+\end{column}
+
+\begin{column}{0.5\textwidth}
+\begin{itemize}
+\item \emph{datetime}
+\item \emph{ragged2e}
+\item \emph{tikz}
+\end{itemize}
+\end{column}
+\end{columns}
+\vspace{1cm}
+There is always the option of simplifying the theme to reduce the number of required packages. 
+
+\end{frame}
+
+%-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+%	FRAME:
+%-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+\begin{frame}{Replace the Logo With Your Own}
+
+The \cBlue{Sigtunaskolan Humanistiska Läroverket} logo, \texttt{logo.png}, should be replaced with your own.  I teach within the Mathematics Institution at SSHL.
+\vspace{1cm}
+\begin{figure}
+	\centerline{\includegraphics[width=0.3\textwidth]{logo.png}}
+\caption{SSHL Logo}
+\end{figure}
+
+\end{frame}
+
+%-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+%	FRAME: Theme Options
+%-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+\begin{frame}{Theme Options}
+\begin{table}[]
+	\begin{tabularx}{\linewidth}{l>{\raggedright}X}
+		\toprule
+		\textbf{Option}			& \textbf{Description} \tabularnewline
+		\midrule
+		\texttt{\cBlue{newPxFont}} & newpxtext and newpxtext fonts will be used (pdfLaTeX) \tabularnewline
+		\texttt{\cBlue{progressbar}} & Frame Title progress bar \tabularnewline
+		\texttt{\cBlue{sectionpages}} & Section pages \tabularnewline
+		\texttt{\cBlue{fullfooter}} & Footers with logo\tabularnewline
+		\texttt{\cBlue{numfoooter}} & Footers with page number only \tabularnewline
+		\texttt{\cBlue{greybg}} & Frame background default is set to grey \tabularnewline
+		\texttt{\cBlue{cblock}} & Blocks with colored background \tabularnewline
+		\texttt{\cBlue{protectFrameTitle}} & Protect the frame title (if needed) \tabularnewline
+		\texttt{\cBlue{valigncolumns}} & Vertically align columns\tabularnewline
+		\bottomrule
+	\end{tabularx}
+	\label{tab:options}
+\end{table}
+\end{frame}
+
+%-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+%
+%	SECTION: COLORS
+%
+%-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+\section{Colors}
+
+%-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+%	FRAME:
+%-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+\begin{frame}[c]{Color Style File}
+	
+The sthlm theme style file \texttt{beamerthemesthlm.sty} references the \texttt{beamercolorthemesthlm.sty} file for the theme colors automatically. \\
+\vspace{1em}
+If you wish to bring your own color theme, then you will have to either change the reference in the \texttt{beamerthemesthlm.sty} file or rename your style file to \texttt{beamercolorthemesthlm.sty}.
+
+\end{frame}
+
+%-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+%	FRAME:
+%-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+\begin{frame}[c]{Primary Presentation Colors}
+
+\begin{columns}[c]
+
+%	Color Box: Dark Grey
+\begin{column}{0.12\textwidth}
+\vspace{3em}
+\setbeamercolor{boxsthlmDarkGrey}{bg=\cnDarkGrey,fg=white}
+\begin{beamercolorbox}[wd=\linewidth,ht=5ex,dp=3ex]{boxsthlmDarkGrey}
+\centering
+	\texttt{Grey}
+\end{beamercolorbox}
+
+\vspace{3em}
+
+%	Color Box: Grey
+\setbeamercolor{boxsthlmGrey}{bg=\cnGrey,fg=\cnDarkGrey}
+\begin{beamercolorbox}[wd=\linewidth,ht=5ex,dp=3ex]{boxsthlmGrey}
+\centering
+	\texttt{Grey}
+\end{beamercolorbox}
+
+\end{column}
+
+\begin{column}{0.12\textwidth}
+
+\vspace{3em}
+	
+%	Color Box: Blue
+\setbeamercolor{boxsthlmBlue}{bg=\cnBlue,fg=white}
+\begin{beamercolorbox}[wd=\linewidth,ht=5ex,dp=3ex]{boxsthlmBlue}
+\centering
+	\texttt{Blue}
+\end{beamercolorbox}
+
+\vspace{3em}
+
+%	Color Box: Light Blue
+\setbeamercolor{boxsthlmLightBlue}{bg=\cnLightBlue,fg=\cnDarkGrey}
+\begin{beamercolorbox}[wd=\linewidth,ht=5ex,dp=3ex]{boxsthlmLightBlue}
+\centering
+	\texttt{Blue}
+\end{beamercolorbox}
+\end{column}
+
+\begin{column}{0.12\textwidth}
+
+%	Color Box: Red
+\vspace{3em}
+\setbeamercolor{boxsthlmRed}{bg=\cnRed,fg=white}
+\begin{beamercolorbox}[wd=\linewidth,ht=5ex,dp=3ex]{boxsthlmRed}
+\centering
+	\texttt{Red}
+\end{beamercolorbox}
+
+\vspace{3em}
+
+%	Color Box: Light Red
+\setbeamercolor{boxsthlmLightRed}{bg=\cnLightRed,fg=\cnDarkGrey}
+\begin{beamercolorbox}[wd=\linewidth,ht=5ex,dp=3ex]{boxsthlmLightRed}
+\centering
+	\texttt{Red}
+\end{beamercolorbox}
+\end{column}
+
+\begin{column}{0.12\textwidth}
+
+\vspace{3em}
+
+%	Color Box: Green
+\setbeamercolor{boxsthlmGreen}{bg=\cnGreen,fg=white}
+\begin{beamercolorbox}[wd=\linewidth,ht=5ex,dp=3ex]{boxsthlmGreen}
+\centering
+	\texttt{Green}
+\end{beamercolorbox}
+
+\vspace{3em}
+
+%	Color Box: Light Green
+\setbeamercolor{boxsthlmLightGreen}{bg=\cnLightGreen,fg=\cnDarkGrey}
+\begin{beamercolorbox}[wd=\linewidth,ht=5ex,dp=3ex]{boxsthlmLightGreen}
+\centering
+	\texttt{Green}
+\end{beamercolorbox}
+\end{column}
+
+\begin{column}{0.12\textwidth}
+
+\vspace{3em}
+
+%	Color Box: Purple
+\setbeamercolor{boxsthlmPurple}{bg=\cnPurple,fg=white}
+\begin{beamercolorbox}[wd=\linewidth,ht=5ex,dp=3ex]{boxsthlmPurple}
+\centering
+	\texttt{Purple}
+\end{beamercolorbox}
+
+\vspace{3em}
+
+%	Color Box: Light Purple
+\setbeamercolor{boxsthlmLightPurple}{bg=\cnLightPurple,fg=\cnDarkGrey}
+\begin{beamercolorbox}[wd=\linewidth,ht=5ex,dp=3ex]{boxsthlmLightPurple}
+\centering
+	\texttt{Purple}
+\end{beamercolorbox}
+\end{column}
+
+\begin{column}{0.12\textwidth}
+
+\vspace{3em}
+
+%	Color Box: Orange
+\setbeamercolor{boxsthlmOrange}{bg=\cnOrange,fg=white}
+\begin{beamercolorbox}[wd=\linewidth,ht=5ex,dp=3ex]{boxsthlmOrange}
+\centering
+	\texttt{Orange}
+\end{beamercolorbox}
+
+\vspace{3em}
+
+%	Color Box: Light Orange
+\setbeamercolor{boxsthlmLightOrange}{bg=\cnLightOrange,fg=\cnDarkGrey}
+\begin{beamercolorbox}[wd=\linewidth,ht=5ex,dp=3ex]{boxsthlmLightOrange}
+\centering
+	\texttt{Orange}
+\end{beamercolorbox}
+\end{column}
+\end{columns}
+\end{frame}
+
+%-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+%	FRAME:
+%-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+\begin{frame}{Colored Text}
+\begin{table}[]
+	\caption{Colored Text}
+	\begin{tabular}[]{lcc}
+		\toprule
+		Red				& \cLightRed{LightRed}	& \cRed{Red} 	\\[0.25em]
+		Blue			& \cLightBlue{LightBlue}	& \cBlue{Blue}	\\[0.25em]
+		Green			& \cLightGreen{LightGreen}	& \cGreen{Green}	\\[0.25em]
+		Purple			& \cLightPurple{LightPurple}	& \cPurple{Purple}	\\[0.25em]
+		Orange			& \cLightOrange{LightOrange}	& \cOrange{Orange}	\\[0.25em]
+		Grey			& \cGrey{Grey}					& \cDarkGrey{DarkGrey}	\\[0.25em]
+		\bottomrule
+	\end{tabular}
+	\label{tab:Colored Text}
+\end{table}
+\end{frame}
+
+
+%==========================================================================
+
+%=======================================================================
+
+
+%======================================================================
+
+%===============================================================
+
+
+
+
+%-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+%	FRAME: Multiple Columns
+%-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+\begin{frame}{Multiple Columns}
+\begin{columns}
+\begin{column}{.48\linewidth}
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
+\end{column}
+\begin{column}{.48\linewidth}
+		\begin{itemize}
+        	\item Point 1
+			\begin{itemize}
+				\item Sub point a
+				\item Sub point b
+			\end{itemize}
+        	\item Point 2
+		\end{itemize}
+	\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{References}
+	\begin{thebibliography}{10}
+
+
+
+  \end{thebibliography}
+\end{frame}
+
+%-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+%
+%	SECTION: Conclusion
+%
+%-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+\begin{frame}{About}
+
+This sthlm beamer theme is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.\\
+\vspace{1cm}
+If you have any questions or comments
+\begin{itemize}
+	\item Website: \cBlue{markolson.se}
+	\item Twitter: \cBlue{@markolsonse}
+	\item Instagram: \cBlue{@markolson.se}
+\end{itemize}
+\end{frame}
+
+%-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+%	FRAME:
+%-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+\begingroup
+\setbeamercolor{background canvas}{bg=\cnDarkGrey}
+\begin{frame}[plain]
+
+\centering{\cGrey{\Huge{THE \newline END}}}
+
+\end{frame}
+\endgroup
+
+\end{document}

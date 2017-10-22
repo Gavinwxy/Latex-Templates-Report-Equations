@@ -1,0 +1,20 @@
+\frametitle{Run face detection every four frames}
+Run face detection every four frames
+
+\begin{python}
+#Initialize frame counter
+fcounter = 0
+#Read frames from camera to array
+for frame in camera.capture_continuous():
+image = frame.array
+
+# Run face detection every four frames
+if fcounter == 3:
+fcounter = 0
+#run face tracking algorithm
+
+else:
+#run face tracking algorithm
+
+fcounter += 1
+\end{python}

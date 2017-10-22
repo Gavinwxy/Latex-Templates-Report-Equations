@@ -1,0 +1,32 @@
+\documentclass{article}
+\usepackage{amsmath}
+
+\begin{document}
+	
+	\begin{equation}
+	\underset{x^n_m,p^n_m}{\rm Maximize}\ EE=\frac{\sum_{n=1}^{N}\sum_{m=1}^{N}c^n_m\cdot x^n_m}{\varepsilon_0\cdot \sum_{n=1}^{N}\sum_{m=1}^{N}p^n_m\cdot x^n_m+P_0}
+	\end{equation}
+	\\
+	
+	
+	\begin{equation}
+	\underset{x^n_m,p^n_m}{\rm Maximize}\ EE=\sum_{n=1}^{N}\sum_{m=1}^{M}c^n_m x^n_m-q(\varepsilon_0 \sum_{n=1}^{N}\sum_{m=1}^{N}p^n_m x^n_m+P_0)
+	\end{equation}
+	\\
+	
+	
+	
+	\begin{gather}
+	\mathcal{L}(\mathbf{X},\mathbf{P},\lambda,\mu)=\sum_{n=1}^{N}\sum_{m=1}^{M}c^n_m\cdot x^n_m\nonumber\\-q\left(\varepsilon_0 \sum_{n=1}^{N}\sum_{m=1}^{N}p^n_m x^n_m+P_0\right)\nonumber\\+\sum_{m=1}^{M}\lambda_m\left(\sum_{n=1}^{N}\sum_{m=1}^{M}c^n_m x^n_m-\overline{c}_m\right)\nonumber\\+\mu\left(P_T-\sum_{n=1}^{N}\sum_{m=1}^{M}p^n_m \cdot x^n_m\right)\nonumber\\=\sum_{n=1}^{N}\left[\sum_{m=1}^{M}(1+\lambda_m)c^n_m\cdot x^n_m-\sum_{m=1}^{M}(q\varepsilon_0+\mu)p^n_m \cdot x^n_m\right]\nonumber\\+\mu P_T-\sum_{m=1}^{M}\lambda_m*\overline{c}_m-qP_0
+	\end{gather}
+	\\
+	
+	\begin{gather}
+	\underset{x^n_m,p^n_m}{\rm Maximize}\  \mathcal{L}(\mathbf{X_n},\mathbf{P_n})=\sum_{m=1}^{M}(1+\lambda_m)c^n_m\cdot x^n_m\nonumber\\-\sum_{m=1}^{M}(q\varepsilon_0+\mu)p^n_m \cdot x^n_m\nonumber\\+\mu P_T-\sum_{m=1}^{M}\lambda_m*\overline{c}_m-qP_0	
+	\end{gather}
+	
+	\begin{gather}
+	\frac{d \mathcal{L}}{d p^n_{m^*}}=\frac{B(1+\lambda_m^*)}{Ln(2)}\times\left(\frac{H^n_{m^*}}{1+p^n_{m^*}\cdot H^n_{m^*}}\right)\nonumber\\-(q\varepsilon_0+\mu)
+	\end{gather}
+
+\end{document}

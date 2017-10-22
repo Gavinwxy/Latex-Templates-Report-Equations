@@ -1,0 +1,20 @@
+\beamer@sectionintoc {2}{General Information}{3}{0}{1}
+\beamer@sectionintoc {3}{Colors}{11}{0}{2}
+\beamer@sectionintoc {4}{Introduction}{15}{0}{3}
+\beamer@sectionintoc {5}{What is RaspberryPi?}{17}{0}{4}
+\beamer@sectionintoc {6}{Initialize RaspberryPi}{19}{0}{5}
+\beamer@sectionintoc {7}{Initialize RaspberryPi}{21}{0}{6}
+\beamer@sectionintoc {8}{Initialize RaspberryPi}{23}{0}{7}
+\beamer@sectionintoc {9}{Initialize RaspberryPi}{25}{0}{8}
+\beamer@sectionintoc {10}{haar-like feature}{28}{0}{9}
+\beamer@sectionintoc {11}{adaboost}{31}{0}{10}
+\beamer@sectionintoc {12}{outcome}{33}{0}{11}
+\beamer@sectionintoc {13}{Face Tracking}{36}{0}{12}
+\beamer@sectionintoc {14}{Motion Detector}{46}{0}{13}
+\beamer@sectionintoc {15}{Motion Detector}{48}{0}{14}
+\beamer@sectionintoc {16}{Motion Detector}{50}{0}{15}
+\beamer@sectionintoc {17}{Motion Detector}{52}{0}{16}
+\beamer@sectionintoc {18}{Difficulties and Improvements}{55}{0}{17}
+\beamer@sectionintoc {19}{Further Functions: LPR System}{59}{0}{18}
+\beamer@sectionintoc {20}{Further Functions: PT Camera Control}{62}{0}{19}
+\beamer@sectionintoc {21}{Conclusion}{64}{0}{20}
