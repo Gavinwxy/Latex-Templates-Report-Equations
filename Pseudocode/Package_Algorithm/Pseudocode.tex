@@ -1,0 +1,163 @@
+\documentclass{article}
+
+\usepackage{algorithm}  
+\usepackage{algpseudocode}  
+\usepackage{amsmath}  
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}  % Use Input in the format of Algorithm  
+\renewcommand{\algorithmicensure}{\textbf{Output:}} % Use Output in the format of Algorithm 
+
+
+\begin{document}
+		\begin{algorithm}
+			\caption{Merger Sort}
+			\begin{algorithmic}[1] %Line number on
+				\Require $Array$, $n$
+				\Ensure Reverse order array
+				\Function {MergerSort}{$Array, left, right$}
+				\State $result \gets 0$
+				\If {$left < right$}
+				\State $middle \gets (left + right) / 2$
+				\State $result \gets result +$ \Call{MergerSort}{$Array, left, middle$}
+				\State $result \gets result +$ \Call{MergerSort}{$Array, middle, right$}
+				\State $result \gets result +$ \Call{Merger}{$Array,left,middle,right$}
+				\EndIf
+				\State \Return{$result$}
+				\EndFunction
+				\State
+				\Function{Merger}{$Array, left, middle, right$}
+				\State $i\gets left$
+				\State $j\gets middle$
+				\State $k\gets 0$
+				\State $result \gets 0$
+				\While{$i<middle$ \textbf{and} $j<right$}
+				\If{$Array[i]<Array[j]$}
+				\State $B[k++]\gets Array[i++]$
+				\Else
+				\State $B[k++] \gets Array[j++]$
+				\State $result \gets result + (middle - i)$
+				\EndIf
+				\EndWhile
+				\While{$i<middle$}
+				\State $B[k++] \gets Array[i++]$
+				\EndWhile
+				\While{$j<right$}
+				\State $B[k++] \gets Array[j++]$
+				\EndWhile
+				\For{$i = 0 \to k-1$}
+				\State $Array[left + i] \gets B[i]$
+				\EndFor
+				\State \Return{$result$}
+				\EndFunction
+			\end{algorithmic}
+		\end{algorithm}
+	
+	
+	
+\begin{algorithm}[htb]  
+	\caption{ Framework of ensemble learning for our system.}  
+	\label{alg:Framwork}  
+	\begin{algorithmic}[1]  
+		\Require  
+		The set of positive samples for current batch, $P_n$;  
+		The set of unlabelled samples for current batch, $U_n$;  
+		Ensemble of classifiers on former batches, $E_{n-1}$;  
+		\Ensure  
+		Ensemble of classifiers on the current batch, $E_n$;  
+		\State Extracting the set of reliable negative and/or positive samples $T_n$ from $U_n$ with help of $P_n$;  
+		\label{code:fram:extract}  
+		\State Training ensemble of classifiers $E$ on $T_n \cup P_n$, with help of data in former batches;  
+		\label{code:fram:trainbase}  
+		\State $E_n=E_{n-1}cup E$;  
+		\label{code:fram:add}  
+		\State Classifying samples in $U_n-T_n$ by $E_n$;  
+		\label{code:fram:classify}  
+		\State Deleting some weak classifiers in $E_n$ so as to keep the capacity of $E_n$;  
+		\label{code:fram:select} \\  
+		\Return $E_n$;  
+	\end{algorithmic}  
+\end{algorithm}  	
+	
+
+
+
+\begin{algorithm}[h]  
+	\caption{An example for format For \& While Loop in Algorithm}  
+	\begin{algorithmic}[1]  
+		\For{each $i\in [1,9]$}  
+		\State initialize a tree $T_{i}$ with only a leaf (the root);  
+		\State $T=T\cup T_{i};$  
+		\EndFor  
+		\ForAll {$c$ such that $c\in RecentMBatch(E_{n-1})$}  
+		\label{code:TrainBase:getc}  
+		\State $T=T\cup PosSample(c)$;  
+		\label{code:TrainBase:pos}  
+		\EndFor;  
+		\For{$i=1$; $i<n$; $i++$ }  
+		\State $//$ Your source here;  
+		\EndFor  
+		\For{$i=1$ to $n$}  
+		\State $//$ Your source here;  
+		\EndFor  
+		\State $//$ Reusing recent base classifiers.  
+		\label{code:recentStart}  
+		\While {$(|E_n| \leq L_1 )and( D \neq \phi)$}  
+		\State Selecting the most recent classifier $c_i$ from $D$;  
+		\State $D=D-c_i$;  
+		\State $E_n=E_n+c_i$;  
+		\EndWhile  
+		\label{code:recentEnd}  
+	\end{algorithmic}  
+\end{algorithm}
+
+
+\begin{algorithm}[h]  
+	\caption{Conjugate Gradient Algorithm with Dynamic Step-Size Control}  
+	\label{alg::conjugateGradient}  
+	\begin{algorithmic}[1]  
+		\Require  
+		$f(x)$: objective funtion;  
+		$x_0$: initial solution;  
+		$s$: step size;  
+		\Ensure  
+		optimal $x^{*}$  
+		\State initial $g_0=0$ and $d_0=0$;  
+		\Repeat  
+		\State compute gradient directions $g_k=\bigtriangledown f(x_k)$;  
+		\State compute Polak-Ribiere parameter $\beta_k=\frac{g_k^{T}(g_k-g_{k-1})}{\parallel g_{k-1} \parallel^{2}}$;  
+		\State compute the conjugate directions $d_k=-g_k+\beta_k d_{k-1}$;  
+		\State compute the step size $\alpha_k=s/\parallel d_k \parallel_{2}$;  
+		\Until{($f(x_k)>f(x_{k-1})$)}  
+	\end{algorithmic}  
+\end{algorithm}  
+
+
+\makeatletter  
+\def\BState{\State\hskip-\ALG@thistlm}  
+\makeatother  
+\begin{algorithm}  
+	\caption{My algorithm}\label{euclid}  
+	\begin{algorithmic}[1]  
+		\Procedure{MyProcedure}{}  
+		\State $\textit{stringlen} \gets \text{length of }\textit{string}$  
+		\State $i \gets \textit{patlen}$  
+		\BState \emph{top}:  
+		\If {$i > \textit{stringlen}$} \Return false  
+		\EndIf  
+		\State $j \gets \textit{patlen}$  
+		\BState \emph{loop}:  
+		\If {$\textit{string}(i) = \textit{path}(j)$}  
+		\State $j \gets j-1$.  
+		\State $i \gets i-1$.  
+		\State \textbf{goto} \emph{loop}.  
+		\State \textbf{close};  
+		\EndIf  
+		\State $i \gets i+\max(\textit{delta}_1(\textit{string}(i)),\textit{delta}_2(j))$.  
+		\State \textbf{goto} \emph{top}.  
+		\EndProcedure  
+	\end{algorithmic}  
+\end{algorithm}
+
+
+
+\end{document}
+

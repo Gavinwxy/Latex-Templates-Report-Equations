@@ -1,0 +1,211 @@
+\documentclass[11pt]{article}  
+\usepackage{amssymb}  
+\usepackage{bm}  
+\usepackage{textcomp} %命令\textacutedbl的包,二阶导符号  
+  
+
+\makeatletter  
+\newif\if@restonecol  
+\makeatother  
+\let\algorithm\relax  
+\let\endalgorithm\relax  
+\usepackage[linesnumbered,ruled,vlined]{algorithm2e}%[ruled,vlined]{  
+\usepackage{algpseudocode}  
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}   
+\renewcommand{\algorithmicensure}{\textbf{Output:}}   
+  
+\begin{document}  
+	
+ \begin{algorithm}  
+ 	\caption{identify Row Context}  
+ 	\KwIn{$r_i$, $Backgrd(T_i)$=${T_1,T_2,\ldots ,T_n}$ and similarity threshold $\theta_r$}  
+ 	\KwOut{$con(r_i)$}  
+ 	$con(r_i)= \Phi$\;  
+ 	\For{$j=1;j \le n;j \ne i$}  
+ 	{  
+ 		float $maxSim=0$\;  
+ 		$r^{maxSim}=null$\;  
+ 		\While{not end of $T_j$}  
+ 		{  
+ 			compute Jaro($r_i,r_m$)($r_m\in T_j$)\;  
+ 			\If{$(Jaro(r_i,r_m) \ge \theta_r)\wedge (Jaro(r_i,r_m)\ge r^{maxSim})$}  
+ 			{  
+ 				replace $r^{maxSim}$ with $r_m$\;  
+ 			}  
+ 		}  
+ 		$con(r_i)=con(r_i)\cup {r^{maxSim}}$\;  
+ 	}  
+ 	return $con(r_i)$\;  
+ \end{algorithm} 
+
+%------------------------------------------------------------------------
+%----------------------------------------------------------------------------
+ 
+ 
+ \begin{algorithm}  
+ 	\caption{Service checkpoint image storage node and routing path selection}  
+ 	\LinesNumbered  
+ 	\KwIn{host server $PM_s$ that $SerImg_k$ is fetched from, $subnet_s$ that $PM_s$ belongs to, $pod_s$ that $PM_s$ belongs to}  
+ 	\KwOut{Service image storage server $storageserver$,and the image transfer path $path$}  
+ 	$storageserver$ = Storage node selection($PM_s$, $SerImg_k$,$subnet_s$,$pod_s$)\;  
+ 	\If{ $storageserver$ $\neq$ null}  
+ 	{  
+ 		select a path from $storageserver$ to $PM_s$ and assign the path to $path$\;  
+ 	}  
+ 	
+ 	\textbf{final} \;  
+ 	\textbf{return} $storageserver$ and $path$;  
+ 	
+ \end{algorithm}
+ 
+
+%------------------------------------------------------------------------
+%----------------------------------------------------------------------------
+
+
+\begin{algorithm}  
+	\caption{Storage node selection}  
+	\LinesNumbered  
+	\KwIn{host server $PM_s$ that the checkpoint image $Img$ is fetched from, $subnet_s$ that $PM_s$ belongs to, $pod_s$ that $PM_s$ belongs to}  
+	\KwOut{Image storage server $storageserver$}  
+	
+	\For{ each host server $PM_i$ in the same subnet with $PM_s$ }  
+	{  
+		\If{ $PM_i$ is not a service providing node or checkpoint image storage node of $S_k$ }  
+		{  
+			add $PM_i$ to $candidateList$ \;  
+		}  
+	}  
+	sort $candidateList$ by reliability desc\;  
+	init $storageserver$ ;  
+	\For{ each $PM_k$ in $candidateList$}  
+	{  
+		
+		\If{ $SP(PM_k)$ $\geq$ $E(SP)$ of $pod_i$ and $BM_k$ $\le$ size of $Img$ }  
+		{  
+			assign $PM_k$ to $storageserver$\;  
+			goto final\;  
+		}  
+	}  
+	clear $candidateList$\;  
+	add all other subnets in $pod_s$ to $netList$\;  
+	\For{ each subnet $subnet_j$ in $netList$}  
+	{  
+		clear $candidateList$\;  
+		\For {each $PM_i$ in $subnet_j$ }  
+		{  
+			\If{ $PM_i$ is not a service providing node or checkpoint image storage node of $S_k$ }  
+			{  
+				add $PM_i$ to $candidateList$\;  
+			}  
+		}  
+		sort all host in $candidateList$ by reliability desc\;  
+		\For{ each $PM_k$ in $candidateList$}  
+		{  
+			
+			\If{$SP(PM_k)$ $\geq$ $E(SP)$ of $pod_i$ and $BM_k$ $\le$ size of $Img$}  
+			{  
+				assign $PM_k$ to $storageserver$ \;  
+				goto final\;  
+			}  
+		}  
+	}  
+	\textbf{final} \;  
+	\textbf{return} $storageserver$;  
+\end{algorithm}  
+ %------------------------------------------------------------------------
+ %----------------------------------------------------------------------------
+ 
+\begin{algorithm}  
+\caption{component matrices computing}  
+\LinesNumbered  
+\KwIn{$\mathcal{X}\in\mathbb{R}^{l_1\times l_2\times\cdots\times l_N},\varepsilon,\lambda,\delta,R$}  
+\KwOut{$A^{(j)}s$ for $j=1$ to $N$}  
+\textbf{Initialize} all $A^{(j)}s$ //which can be seen as the $0^{th}$ round iterations\;  
+  
+{$l$\hspace*{-1pt}\textacutedbl}$=L$ //if we need to judge whether $(11)$ is true then {$l$\hspace*{-1pt}\textacutedbl} denotes $L|_{t-1}$\;  
+  
+\For{ each $A_{i_jr}^{{j}}(1\le j\le N,1\le i_j\le I_j,1\le r\le R)$ }  
+{//$1^{st}$ round iterations\;  
+    $g_{i_jr}^{(j)'}=g_{i_jr}^{(j)}$\;  
+    $A_{i_jr}^{(j)'}=A_{i_jr}^{(j)}$//if the rollback shown as $(12)$ is needed,$A_{i_jr}^{(j)'}$ denotes $A_{i_jr}^{(j)}|_{t-1}$\;  
+    $A_{i_jr}^{(j)}=A_{i_jr}^{(j)}-\mathrm{{\bf sign}}\left(g_{i_jr}^{(j)}\right)\cdot\delta_{i_jr}^{(j)}$\;  
+}  
+  
+\Repeat(//other rounds of iterations for computing component matrices){$\bm{L\le \varepsilon}$ or maximum iterations exhausted}  
+{  
+    $l'=L$ //if we need to judge whether $(11)$ is true then $l'$ denotes $L|_t$\;  
+    \For{ each $A_{i_jr}^{{j}}(1\le j\le N,1\le i_j\le I_j,1\le r\le R)$}  
+    {  
+        \If{$g_{i_jr}^{(j)}\cdot g_{i_jr}^{(j)'}>0$}  
+        {  
+                $A_{i_jr}^{(j)'}=A_{i_jr}^{(j)} $\;  
+                $g_{i_jr}^{(j)'}=g_{i_jr}^{(j)} $\;  
+                $\delta_{i_jr}^{(j)}=\bm{\min}\left(\delta_{i_jr}^{(j)}\cdot\eta^{+},Max\_Step\_Size\right)$\;  
+                $A_{i_jr}^{(j)}=A_{i_jr}^{(j)}-\mathrm{{\bf sign}}\left(g_{i_jr}^{(j)}\right)\cdot\delta_{i_jr}^{(j)}$\;  
+        }  
+        \ElseIf{$g_{i_jr}^{(j)}\cdot g_{i_jr}^{(j)'}<0$}  
+        {  
+            \If{$l'>l$\hspace*{-1pt}\textacutedbl}  
+            {  
+                $g_{i_jr}^{(j)'}=g_{i_jr}^{(j)}$\;  
+                $A_{i_jr}^{(j)}=A_{i_jr}^{(j)'}$// if $(11)$ is true then rollback as $(12)$\;  
+                $\delta_{i_jr}^{(j)}=\bm{\max}\left(\delta_{i_jr}^{(j)}\times\eta^{-},Min\_Step\_Size\right)$\;  
+            }  
+            \Else  
+            {  
+                $A_{i_jr}^{(j)'}=A_{i_jr}^{(j)} $\;  
+                $g_{i_jr}^{(j)'}=g_{i_jr}^{(j)} $\;  
+                $\delta_{i_jr}^{(j)}=\bm{\max}\left(\delta_{i_jr}^{(j)}\cdot\eta^{-},Min\_Step\_Size\right)$\;  
+                $A_{i_jr}^{(j)}=A_{i_jr}^{(j)}-\mathrm{{\bf sign}}\left(g_{i_jr}^{(j)}\right)\cdot\delta_{i_jr}^{(j)}$\;  
+            }  
+        }  
+        \Else  
+        {  
+                $A_{i_jr}^{(j)'}=A_{i_jr}^{(j)} $\;  
+                $g_{i_jr}^{(j)'}=g_{i_jr}^{(j)} $\;  
+                $A_{i_jr}^{(j)}=A_{i_jr}^{(j)}-\mathrm{{\bf sign}}\left(g_{i_jr}^{(j)}\right)\cdot\delta_{i_jr}^{(j)}$\;  
+        }  
+    }  
+    $l$\hspace*{-1pt}\textacutedbl$=l'$\;  
+}  
+\end{algorithm} 
+%----------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
+\begin{algorithm}  
+	\caption{Learning algorithm of R2P}  
+	\label{alg:r2p}  
+	\KwIn{ratings $R$, joint demographic representations $Y$,learning rate $\eta$,maximum iterative number $maxIter$, negative sampling number $k$\;}  
+	\KwOut{interaction matrix $\bm{W}$, movie vectors $V$\;}  
+	Initialize $\bm{W},V$ randomly\;  
+	$t = 0$\;  
+	For convenience, define $\vec{\varphi}_n = \sum_{m\in S_n}r_{m,n}\vec{v}_m$\; %\varphi_n\bm{W}\vec{y}_n  
+	\While{not converged \rm{or} $t>maxIter$}  
+	{  
+		t = t+1\;  
+		\For{$n=1;n \le N;n++$}  
+		{  
+			$\bm{W} = \bm{W}+\eta\big(1-\sigma\left(\vec{\varphi}_n^T\bm{W}\vec{y}_n\right)\big)\vec{\varphi}_n\vec{y}_n^T$\;\label{algline:W}  
+			\For{$m\in S_n$}  
+			{  
+				$\vec{v}_m=\vec{v}_m+ \eta\left(1-\sigma\left(\vec{\varphi}_n^T\bm{W}\vec{y}_n\right)\right)r_{m,n}\bm{W}\vec{y}_n$\;\label{algline:V}  
+			}  
+			\For{$i=1;i\le k;i++$}  
+			{  
+				sample negative sample $\vec{y}_i$ from $P_n$\;  
+				$\bm{W} = \bm{W}-\eta\big(1-\sigma\left(-\vec{\varphi}_n^T\bm{W}\vec{y}_n\right)\big)\vec{\varphi}_n\vec{y}_i^T$\;  
+				\For{$m\in S_n$}  
+				{  
+					$\vec{v}_m=\vec{v}_m- \eta\left(1-\sigma\left(-\vec{\varphi}_n^T\bm{W}\vec{y}_n\right)\right)r_{m,n}\bm{W}\vec{y}_i$\;  
+				}  
+			}  
+		}  
+		$\bm{W} = \bm{W}-2\lambda\eta\bm{W}$\;  
+		$V=V-2\lambda\eta V$  
+	}  
+	return $\bm{W},V$\;  
+	%\end{algorithmic}  
+\end{algorithm}  
+
+ 
+\end{document}  
